@@ -1,0 +1,61 @@
+<nav class="border-t-4 border-indigo-500"></nav>
+
+<section class="p-6 bg-coolGray-100 text-coolGray-800">
+  <div class="container mx-auto grid gap-6 lg:grid-cols-2 xl:grid-cols-5">
+    <div class="w-full p-16 rounded-md xl:col-span-2 bg-coolGray-50">
+      <h1 id="main-title" class="text-4xl font-extrabold text-blue-600">
+        <span class="text-black">From</span> Arabic
+        <span class="text-black"> to</span> Roman
+      </h1>
+      <p class="my-8">
+        <span class="font-medium text-coolGray-900"
+          >Enter an arabic numeral. </span
+        >For example: 35.
+      </p>
+      <form
+        [formGroup]="romanForm"
+        (ngSubmit)="convertToArab()"
+        class="self-stretch space-y-3 ng-untouched ng-pristine ng-valid"
+      >
+        <div class="mb-3">
+          <label for="name" class="text-sm sr-only">Arabic Numeral</label>
+          <input
+            id="name"
+            type="number"
+            formControlName="fromArabTxt"
+            placeholder="Enter arabic numeral"
+            class="
+              w-full
+              rounded-md
+              focus:ring focus:ring-violet-600
+              border-coolGray-300
+            "
+          />
+        </div>
+        <p *ngIf="!error" class="text-blue-600 text-lg">
+          {{ fromArabAnswer }}
+        </p>
+        <p *ngIf="error" class="text-red-500 text-lg">{{ error }}</p>
+        <button
+          type="submit"
+          class="
+            w-full
+            py-2
+            font-semibold
+            rounded
+            hover:bg-blue-600
+            bg-blue-500
+            text-white
+          "
+        >
+          Convert to Roman
+        </button>
+      </form>
+    </div>
+    <img
+      src="../../../assets/roman.jpg"
+      alt=""
+      class="object-cover w-50 h-100 rounded-md xl:col-span-3"
+    />
+  </div>
+</section>
