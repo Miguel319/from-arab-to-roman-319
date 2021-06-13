@@ -7,6 +7,8 @@ export class RomanController {
 
     @Get()
     fromArab(@Query('fromArab') arab: number): string {
+        this.romanService.validateInput(Number(arab));
+        
         return this.romanService.fromArab(arab);
     }
 }

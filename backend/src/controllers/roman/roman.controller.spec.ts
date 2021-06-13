@@ -26,5 +26,17 @@ describe('RomanController', () => {
     it('50 should return L', () => {
       expect(controller.fromArab(50)).toStrictEqual('L');
     });
+
+    it('-4 should throw invalid input', () => {
+      expect(() => controller.fromArab(-4)).toThrow(
+        'The input must be within 1 and 3,999.',
+      );
+    });
+
+    it('4000 should throw invalid input', () => {
+      expect(() => controller.fromArab(4000)).toThrow(
+        'The input must be within 1 and 3,999.',
+      );
+    });
   });
 });

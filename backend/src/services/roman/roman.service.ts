@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 
 @Injectable()
 export class RomanService {
@@ -17,6 +17,14 @@ export class RomanService {
     [4, 'IV'],
     [1, 'I'],
   ];
+
+  validateInput(arab: number): void {
+    const isWithinTheRange: boolean = arab >= 1 && arab <= 3999;
+    const isInteger: boolean = Number.isInteger(arab);
+
+    if (!isWithinTheRange || !isInteger)
+      throw new BadRequestException('The input must be within 1 and 3,999.');
+  }
 
   fromArab(arab: number): string {
     const arabToRoman: Array<Array<any>> = RomanService.arabToRoman;
